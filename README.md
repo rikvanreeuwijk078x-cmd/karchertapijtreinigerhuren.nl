@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # karcherreinigerhuren.nl
 
 Statische Nederlandstalige startpagina voor de verhuur van een Kärcher-tapijtreiniger.
@@ -18,6 +17,4 @@ Open `index.html` in een browser. De Google Fonts worden online geladen; zonder 
 - Vervang de contact-placeholder in de contactsectie door een echt telefoonnummer, e-mailadres of boekingslink.
 - Controleer de huurvoorwaarden, ophaal-/bezorginformatie en eventuele informatie over prijzen en schoonmaakmiddelen op juistheid.
 - Controleer of `https://karcherreinigerhuren.nl/` het juiste canonical domein is zodra de website live staat.
-=======
 # karchertapijtreinigerhuren.nl
->>>>>>> 25e0924284877e0e1430b90ed4416cd075abc642
