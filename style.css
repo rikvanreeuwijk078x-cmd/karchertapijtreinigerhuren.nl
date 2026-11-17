@@ -170,6 +170,13 @@ a {
 .menu-toggle {
   display: none;
 }
+.menu-toggle-line {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+}
 
 .hero {
   overflow: hidden;
@@ -1239,6 +1246,9 @@ h1 span { color: #987400; }
 .contact-icon { color: #20211f; background: #f3c928; }
 .whatsapp-float { position: fixed; z-index: 10; right: 22px; bottom: 22px; display: grid; width: 58px; height: 58px; place-items: center; color: #20211f; background: #f3c928; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 8px 25px rgb(0 0 0 / 22%); font-size: 14px; font-weight: 800; text-decoration: none; }
 .whatsapp-float:hover { color: #20211f; background: #e6b900; transform: translateY(-2px); }
+.whatsapp-float svg { display: block; width: 30px; height: 30px; }
+.whatsapp-bubble,
+.whatsapp-phone { fill: none; stroke: #705800; stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
 
 @media (max-width: 900px) {
   .benefit-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1290,7 +1300,7 @@ main [data-view][hidden] { display: none !important; }
   .puzzi-feature { padding: 18px; }
   .puzzi-image-wrap { min-height: 220px; }
 }
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .header-inner { position: relative; }
   .menu-toggle { display: grid; width: 42px; height: 42px; align-content: center; justify-items: center; gap: 5px; padding: 0; background: #f1f5f9; border: 0; border-radius: 10px; cursor: pointer; }
   .site-nav { position: absolute; top: 100%; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 18px 18px; background: #fff; border-bottom: 1px solid var(--line); box-shadow: 0 12px 20px rgb(20 37 53 / 7%); }
@@ -1298,6 +1308,102 @@ main [data-view][hidden] { display: none !important; }
   .site-nav > a:not(.button) { padding: 12px 2px; border-bottom: 1px solid #f0f3f6; }
   .site-nav .button { margin-top: 13px; }
 }
+
+/* Booking flow */
+.reservation { background: #f7f6f1; scroll-margin-top: 96px; }
+.reservation-heading { max-width: 760px; }
+.reservation-form { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(280px, .75fr); align-items: start; gap: 22px; }
+.reservation-fields { display: grid; gap: 16px; min-width: 0; }
+.booking-step { min-width: 0; margin: 0; padding: 21px 23px 23px; background: #fff; border: 1px solid #e9e6dc; border-radius: 16px; box-shadow: 0 6px 20px rgb(26 47 67 / 3%); }
+.booking-step legend { display: flex; align-items: center; gap: 10px; width: 100%; margin-bottom: 15px; padding: 0; font-family: "Manrope", sans-serif; font-size: 17px; font-weight: 800; }
+.booking-step-number { display: grid; width: 29px; height: 29px; flex: 0 0 29px; place-items: center; color: #5f4d00; background: #fff3c4; border-radius: 50%; font-family: "DM Sans", sans-serif; font-size: 13px; }
+.booking-step > label,
+.customer-fields label,
+.date-fields label { display: block; margin-bottom: 6px; color: #34362f; font-size: 13px; font-weight: 700; }
+.booking-step select,
+.booking-step input,
+.booking-step textarea { width: 100%; min-height: 46px; padding: 10px 12px; color: var(--ink); background: #fff; border: 1px solid #d9d8d0; border-radius: 9px; font: inherit; font-size: 14px; }
+.booking-step textarea { min-height: 84px; resize: vertical; }
+.booking-step select:focus,
+.booking-step input:focus,
+.booking-step textarea:focus { outline: 3px solid rgb(243 201 40 / 30%); border-color: #987400; }
+.field-hint { margin: 8px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.date-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+#end-date-wrap[hidden] { display: none; }
+.accessory-options { display: grid; gap: 10px; }
+.accessory-option { display: grid; grid-template-columns: 48px minmax(0, 1fr) 66px; align-items: center; gap: 12px; padding: 11px; background: #fbfaf6; border: 1px solid #eeece4; border-radius: 12px; cursor: pointer; }
+.accessory-art { display: grid; width: 46px; height: 46px; place-items: center; color: #806600; background: #fff3c4; border-radius: 11px; }
+.accessory-art-spray { color: #345e73; background: #e8f1f4; }
+.accessory-art svg { width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.accessory-copy { display: grid; gap: 3px; min-width: 0; }
+.accessory-copy strong { font-size: 13px; line-height: 1.35; }
+.accessory-copy small { color: var(--muted); font-size: 11px; }
+.quantity-control input { min-height: 40px; padding: 6px; text-align: center; }
+.customer-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+.house-number-fields { display: grid; grid-template-columns: .7fr 1fr; gap: 10px; }
+.customer-notes { grid-column: 1 / -1; }
+.booking-summary { position: sticky; top: 98px; min-width: 0; padding: 23px; background: #fff; border: 1px solid #e6dfc4; border-radius: 17px; box-shadow: 0 12px 30px rgb(26 47 67 / 7%); }
+.booking-summary h3 { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; font-family: "Manrope", sans-serif; font-size: 20px; }
+.booking-summary dl { display: grid; gap: 12px; margin: 0; }
+.booking-summary dl > div { display: flex; align-items: start; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid #efeee9; }
+.booking-summary dt { color: var(--muted); font-size: 12px; }
+.booking-summary dd { max-width: 60%; margin: 0; font-size: 12px; font-weight: 700; text-align: right; }
+.summary-total { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 17px 0; padding-top: 15px; border-top: 1px solid #e9e6dc; }
+.summary-total span { font-size: 14px; font-weight: 700; }
+.summary-total strong { font-family: "Manrope", sans-serif; font-size: 24px; }
+.summary-note { color: var(--muted); font-size: 11px; line-height: 1.55; }
+.booking-last-step { display: flex; align-items: center; gap: 10px; margin: 20px 0 0; font-size: 13px; font-weight: 700; }
+.booking-submit { display: flex; width: 100%; min-height: 52px; justify-content: center; gap: 8px; margin-top: 17px; padding: 12px 14px; text-align: center; }
+.booking-error { color: #9a3028; font-size: 13px; }
+.booking-error[hidden] { display: none; }
+.section[id] { scroll-margin-top: 96px; }
+.site-header { scroll-margin-top: 0; }
+@media (max-width: 800px) {
+  .reservation-form { grid-template-columns: 1fr; }
+  .booking-summary { position: static; }
+}
+@media (max-width: 600px) {
+  .reservation-form { gap: 14px; }
+  .booking-step { padding: 18px 16px; }
+  .booking-step legend { font-size: 16px; }
+  .date-fields, .customer-fields { grid-template-columns: 1fr; gap: 11px; }
+  .customer-notes { grid-column: auto; }
+  .accessory-option { grid-template-columns: 42px minmax(0, 1fr) 56px; gap: 9px; padding: 9px; }
+  .accessory-art { width: 40px; height: 40px; }
+  .accessory-art svg { width: 30px; height: 30px; }
+  .booking-summary { padding: 19px; }
+}
+.products .product-card { grid-template-rows: auto auto; }
+.products .product-symbol svg { display: block; width: 31px; height: 31px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.products .accessory-add { grid-column: 2 / -1; justify-self: start; padding: 2px 0; color: #705800; background: none; border: 0; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
+.products .accessory-add:hover { color: #20211f; text-decoration: underline; }
+@media (max-width: 900px) {
+  .products .accessory-add { grid-column: 2; }
+}
+
+/* Dutch-formatted date picker */
+.date-input-wrap { position: relative; }
+.date-input-wrap > input { padding-right: 48px !important; }
+.date-picker-toggle { position: absolute; top: 3px; right: 4px; display: grid; width: 40px; height: 40px; place-items: center; color: #705800; background: transparent; border: 0; border-radius: 8px; cursor: pointer; }
+.date-picker-toggle:hover { background: #fff3c4; }
+.date-picker-toggle:focus-visible,
+.calendar-heading button:focus-visible,
+.calendar-day:focus-visible { outline: 3px solid rgb(243 201 40 / 55%); outline-offset: 2px; }
+.date-picker-toggle svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.date-picker { position: absolute; z-index: 15; top: calc(100% + 7px); left: 0; width: min(292px, calc(100vw - 48px)); padding: 13px; background: #fff; border: 1px solid #e5e0cd; border-radius: 14px; box-shadow: 0 14px 34px rgb(26 47 67 / 16%); }
+.date-picker[hidden] { display: none; }
+.date-fields > div:last-child .date-picker { right: 0; left: auto; }
+.calendar-heading { display: grid; grid-template-columns: 36px 1fr 36px; align-items: center; gap: 6px; margin-bottom: 12px; text-align: center; }
+.calendar-heading strong { font-size: 13px; text-transform: capitalize; }
+.calendar-heading button { width: 36px; height: 36px; color: var(--ink); background: #f7f6f1; border: 0; border-radius: 9px; font-size: 23px; line-height: 1; cursor: pointer; }
+.calendar-weekdays,
+.calendar-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; text-align: center; }
+.calendar-weekdays { margin-bottom: 5px; color: var(--muted); font-size: 11px; font-weight: 700; }
+.calendar-day { display: grid; min-width: 0; aspect-ratio: 1; place-items: center; padding: 0; color: var(--ink); background: #fff; border: 0; border-radius: 50%; font: inherit; font-size: 12px; cursor: pointer; }
+.calendar-day:hover:not(:disabled) { background: #fff3c4; }
+.calendar-day.is-today { box-shadow: inset 0 0 0 1px #d9bd48; }
+.calendar-day.is-selected { color: #20211f; background: #f3c928; font-weight: 800; }
+.calendar-day:disabled { color: #c5c5bf; cursor: not-allowed; }
 
 /* Five step rental timeline */
 .how-it-works .how-grid { display: block; }
@@ -1359,3 +1465,10 @@ main [data-view][hidden] { display: none !important; }
 .how-it-works .step-icon-whatsapp,
 .how-it-works .step-icon-confirm,
 .how-it-works .step-icon-delivery { color: #5f4d00; background: #f3df82; }
+@media (max-width: 700px) {
+  .benefits .benefit-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .benefits .benefit-card,
+  .benefits .benefit-card:nth-child(4),
+  .benefits .benefit-card:nth-child(5) { grid-column: 1; width: auto; justify-self: stretch; }
+  .date-fields, .customer-fields { grid-template-columns: 1fr; }
+}
