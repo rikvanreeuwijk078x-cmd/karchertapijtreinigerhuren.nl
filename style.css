@@ -1290,6 +1290,12 @@ main [data-view][hidden] { display: none !important; }
 .puzzi-benefits article > span { display: grid; width: 40px; height: 40px; place-items: center; margin-bottom: 14px; color: #725a00; background: #fff3c4; border-radius: 12px; font-size: 19px; }
 .puzzi-benefits h3 { margin: 0 0 6px; font-size: 16px; }
 .puzzi-benefits p { margin: 0; color: var(--muted); font-size: 13px; }
+.puzzi-cleaning-uses { margin-top: 34px; }
+.puzzi-cleaning-uses .section-heading { margin-bottom: 22px; }
+.puzzi-cleaning-uses .section-heading h3 { margin-bottom: 8px; font-size: clamp(22px, 2.5vw, 30px); }
+.puzzi-cleaning-uses .section-heading > p:last-child { color: var(--muted); }
+.puzzi-cleaning-uses .cleaning-card h4 { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 16px; letter-spacing: -.02em; }
+.puzzi-cleaning-uses .cleaning-uses-cta { margin-top: 24px; }
 @media (max-width: 900px) {
   .site-nav { gap: 10px; }
   .puzzi-feature { gap: 28px; padding: 22px; }
@@ -1298,6 +1304,7 @@ main [data-view][hidden] { display: none !important; }
   .site-nav { gap: 0; }
   .puzzi-feature, .puzzi-benefits { grid-template-columns: 1fr; }
   .puzzi-feature { padding: 18px; }
+  .puzzi-cleaning-uses { margin-top: 28px; }
   .puzzi-image-wrap { min-height: 220px; }
 }
 @media (max-width: 1100px) {
@@ -1356,6 +1363,25 @@ main [data-view][hidden] { display: none !important; }
 .booking-submit { display: flex; width: 100%; min-height: 52px; justify-content: center; gap: 8px; margin-top: 17px; padding: 12px 14px; text-align: center; }
 .booking-error { color: #9a3028; font-size: 13px; }
 .booking-error[hidden] { display: none; }
+.hero-personal { position: absolute; z-index: 3; top: 18px; left: 5px; display: flex; max-width: 270px; align-items: center; gap: 12px; padding: 9px 14px 9px 9px; background: #fff; border: 1px solid #eee8d8; border-radius: 16px; box-shadow: 0 10px 28px rgb(36 57 78 / 9%); }
+.hero-personal img { width: 52px; height: 52px; flex: 0 0 52px; object-fit: cover; object-position: center 22%; border-radius: 50%; }
+.hero-personal p { display: grid; gap: 3px; margin: 0; font-size: 11px; line-height: 1.35; }
+.hero-personal strong { color: var(--ink); font-size: 13px; }
+.hero-personal span { color: var(--muted); }
+.about-perks { display: flex; flex-wrap: wrap; gap: 9px; margin: 22px 0; padding: 0; list-style: none; }
+.about-perks li { padding: 8px 12px; color: #5f4d00; background: #fff3c4; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.booking-timeline { margin-top: 20px; padding-top: 16px; border-top: 1px solid #efeee9; }
+.booking-timeline h4 { margin: 0 0 13px; font-family: "Manrope", sans-serif; font-size: 14px; }
+.booking-timeline-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; margin: 0; padding: 0; list-style: none; }
+.booking-timeline-steps li { position: relative; min-width: 0; padding-left: 12px; border-left: 2px solid #f3df82; }
+.booking-timeline-steps li strong, .booking-timeline-steps li span { display: block; }
+.booking-timeline-steps li strong { margin-bottom: 3px; font-size: 11px; line-height: 1.3; overflow-wrap: anywhere; }
+.booking-timeline-steps li span { color: var(--muted); font-size: 10px; line-height: 1.4; overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .hero-personal { top: 8px; left: 4px; max-width: 235px; gap: 9px; padding: 7px 10px 7px 7px; }
+  .hero-personal img { width: 44px; height: 44px; flex-basis: 44px; }
+  .booking-timeline-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; }
+}
 .section[id] { scroll-margin-top: 96px; }
 .site-header { scroll-margin-top: 0; }
 @media (max-width: 800px) {
@@ -1471,4 +1497,54 @@ main [data-view][hidden] { display: none !important; }
   .benefits .benefit-card:nth-child(4),
   .benefits .benefit-card:nth-child(5) { grid-column: 1; width: auto; justify-self: stretch; }
   .date-fields, .customer-fields { grid-template-columns: 1fr; }
+}
+
+/* Personal introduction leads the homepage on every screen size. */
+.hero { padding-block: 38px 44px; }
+.hero-grid { grid-template-columns: minmax(245px, .88fr) minmax(300px, 1.12fr) minmax(250px, .86fr); align-items: center; gap: 26px; }
+.hero-grid { grid-template-columns: minmax(210px, .72fr) minmax(300px, 1.2fr) minmax(230px, .82fr); gap: 24px; }
+.hero-portrait-wrap { width: clamp(210px, 22vw, 270px); aspect-ratio: 1; justify-self: center; overflow: hidden; padding: 5px; border: 3px solid #f3c928; border-radius: 50%; background: #fff9e5; box-shadow: 0 12px 34px rgb(126 101 0 / 16%); }
+.hero-portrait { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center; }
+.hero-copy { max-width: none; }
+.hero-copy h1 { margin-bottom: 14px; font-weight: 500; }
+.hero-copy .eyebrow { margin-bottom: 12px; }
+.hero-intro { font-size: 16px; line-height: 1.75; }
+.hero-points { grid-template-columns: 1fr; }
+.hero-visual { min-width: 0; }
+.hero-product-image { height: 310px; }
+@media (max-width: 1000px) {
+  .hero-grid { grid-template-columns: minmax(220px, .8fr) minmax(280px, 1.2fr); gap: 24px; }
+  .hero-portrait-wrap { grid-row: 1 / span 2; width: clamp(210px, 28vw, 260px); }
+  .hero-visual { grid-column: 2; }
+  .hero-product-image { height: 230px; }
+}
+@media (max-width: 700px) {
+  .hero { padding: 22px 0 30px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 18px; }
+  .hero-portrait-wrap { grid-row: auto; width: min(58vw, 230px); }
+  .hero-copy { grid-row: 2; }
+  .hero-copy h1 { font-size: clamp(36px, 9vw, 48px); }
+  .hero-visual { grid-column: auto; margin: 0; padding: 6px; }
+  .hero-product-image { height: clamp(230px, 68vw, 300px); }
+  .hero-personal { display: none; }
+}
+
+/* Keep fragment navigation clear of the sticky header, including the hero. */
+.hero[id],
+.section[id] { scroll-margin-top: 80px; }
+
+/* Keep both rental prices and their reservation buttons within a typical first viewport. */
+.pricing.section { padding-block: 26px; }
+.pricing .section-heading { margin-bottom: 20px; }
+.pricing .price-card { padding: 22px; }
+.pricing .price-description { margin-bottom: 16px; }
+.pricing .price-note { margin-top: 12px; }
+
+/* Give the navigation room to expand before the desktop links become cramped. */
+@media (min-width: 701px) and (max-width: 1050px) {
+  .menu-toggle { display: grid; width: 42px; height: 42px; align-content: center; justify-items: center; gap: 5px; padding: 0; background: #f1f5f9; border: 0; border-radius: 10px; cursor: pointer; }
+  .site-nav { position: absolute; top: 100%; right: 24px; left: auto; display: none; width: min(360px, calc(100vw - 48px)); max-height: calc(100vh - 96px); overflow-y: auto; align-items: stretch; flex-direction: column; gap: 0; padding: 8px 18px 18px; background: #fff; border: 1px solid var(--line); border-radius: 0 0 14px 14px; box-shadow: 0 12px 20px rgb(20 37 53 / 7%); }
+  .site-nav.is-open { display: flex; }
+  .site-nav > a:not(.button) { padding: 12px 2px; border-bottom: 1px solid #f0f3f6; }
+  .site-nav .button { margin-top: 13px; }
 }
