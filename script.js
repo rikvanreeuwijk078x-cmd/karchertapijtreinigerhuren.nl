@@ -4,6 +4,25 @@ const year = document.querySelector("#current-year");
 // Zakelijk WhatsApp-nummer in internationaal formaat, alleen cijfers.
 const whatsappNumber = "31615346941";
 
+// Start a fresh mobile visit to the homepage at the top instead of restoring
+// a previous scroll position. Explicit fragment links such as #reservation remain intact.
+const isMobileHomepageEntry = window.matchMedia("(max-width: 700px)").matches && !window.location.hash;
+if (isMobileHomepageEntry && "scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+if (isMobileHomepageEntry) {
+  window.addEventListener("pageshow", (event) => {
+    if (!event.persisted && !window.location.hash) {
+      requestAnimationFrame(() => {
+        window.scrollTo(0, 0);
+        if ("scrollRestoration" in history) history.scrollRestoration = "auto";
+      });
+    } else if ("scrollRestoration" in history) {
+      history.scrollRestoration = "auto";
+    }
+  }, { once: true });
+}
+
 if (year) {
   year.textContent = new Date().getFullYear();
 }
@@ -60,6 +79,42 @@ function showView() {
 
 window.addEventListener("hashchange", showView);
 showView();
+
+// Toon de persoonlijke kennismaking één keer per browsersessie, na één seconde.
+const welcomeCard = document.querySelector("#welcome-card");
+if (welcomeCard) {
+  const welcomeKey = "rik-welcome-dismissed-v1";
+  const legacyWelcomeKey = "rik-welcome-shown";
+  const forceWelcomeForTest = new URLSearchParams(window.location.search).get("welcome") === "1";
+  // Oude versies bewaarden ook een status wanneer de melding alleen was getoond.
+  // Die status mag de herstelde melding niet onbedoeld blijven verbergen.
+  try { sessionStorage.removeItem(legacyWelcomeKey); } catch (_) { /* Sessie-opslag kan geblokkeerd zijn. */ }
+  const closeWelcome = () => {
+    welcomeCard.classList.remove("is-visible");
+    welcomeCard.hidden = true;
+  };
+  welcomeCard.querySelector(".welcome-close").addEventListener("click", () => {
+    try { sessionStorage.setItem(welcomeKey, "1"); } catch (_) { /* Opslag kan door browserinstellingen geblokkeerd zijn. */ }
+    closeWelcome();
+  });
+  welcomeCard.querySelector(".welcome-link").addEventListener("click", () => {
+    try { sessionStorage.setItem(welcomeKey, "1"); } catch (_) { /* Opslag kan door browserinstellingen geblokkeerd zijn. */ }
+    closeWelcome();
+  });
+  window.setTimeout(() => {
+    let dismissed = false;
+    try { dismissed = sessionStorage.getItem(welcomeKey) === "1"; } catch (_) { /* Ga door zonder sessie-opslag. */ }
+    const hashTarget = window.location.hash ? document.getElementById(window.location.hash.slice(1)) : null;
+    const isHomepageView = !hashTarget || hashTarget.dataset.view === "home";
+    if (isHomepageView && (forceWelcomeForTest || !dismissed)) {
+      welcomeCard.hidden = false;
+      requestAnimationFrame(() => welcomeCard.classList.add("is-visible"));
+    }
+  }, 1000);
+  window.addEventListener("hashchange", () => {
+    if (window.location.hash !== "#home" && welcomeCard.classList.contains("is-visible")) closeWelcome();
+  });
+}
 
 const bookingForm = document.querySelector("#reservation-form");
 if (bookingForm) {
