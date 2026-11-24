@@ -110,7 +110,7 @@ if (welcomeCard) {
       welcomeCard.hidden = false;
       requestAnimationFrame(() => welcomeCard.classList.add("is-visible"));
     }
-  }, 1000);
+  }, 3000);
   window.addEventListener("hashchange", () => {
     if (window.location.hash !== "#home" && welcomeCard.classList.contains("is-visible")) closeWelcome();
   });
